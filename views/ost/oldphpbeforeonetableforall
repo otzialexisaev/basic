@@ -1,0 +1,31 @@
+<!--//////////////////////////////////////////-->
+<?php
+    //  foreach ($albums as $album) {
+    //$ids = 'app\\models\\' . $album;
+    ?>
+
+    <div id="<?=$album?>" class="grid-container">
+      <?php
+        $bakeArr = $ids::find()->all();
+        foreach ($bakeArr as $ost) {
+      ?>
+      <div class="item noselect"  data-audio="<?=$ids::$fullpath . $ost->name?>">
+        <?=substr($ost->name, 0, -4)?>
+        <!--<img class="starImg" src="css/resources/player/star.png">-->
+        <div class="card"></div>
+        </div>
+      <?php
+    }
+    ?>
+    </div>
+
+<?php
+//}
+?>
+
+////////////////////Before making albums not an array
+
+
+?>
+  <div class="playlistItem noselect"><?php echo trim($album) ?></div>
+  <?php

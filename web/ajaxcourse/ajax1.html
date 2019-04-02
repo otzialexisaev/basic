@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Text File</title>
+</head>
+<body>
+    <button id="button">Get TextFile</button>
+    <br><br><br>
+    <div id="text"></div>
+
+    <script>
+        function nl2br (str, is_xhtml) {
+            if (typeof str === 'undefined' || str === null) {
+                return '';
+            }
+            var breakTag = (is_xhtml || typeof is_xhtml === 'undefined') ? '<br />' : '<br>';
+            return (str + '').replace(/([^>\r\n]?)(\r\n|\n\r|\r|\n)/g, '$1' + breakTag + '$2');
+        }
+        //Create an Event Listener
+        document.getElementById('button').addEventListener('click', loadText);
+        function loadText(){
+            //Create XHR Object
+            var xhr = new XMLHttpRequest();
+            // OPEN - type, url/file, async
+            xhr.open('GET', 'sample.txt',true);
+
+            //console.log('READYSTATE: ', xhr.readyState);
+
+            //Optional  - used for loaders
+            xhr.onprogress = function () {
+                console.log('READYSTATE: ', xhr.readyState);
+            }
+
+            xhr.onload = function(){
+                if(this.status == 200){
+                    //console.log(this.responseText);
+                    document.getElementById('text').innerHTML = nl2br(this.responseText)
+                } else if (this.status == 404){
+                    document.getElementById('text').innerHTML = "Not found";
+                }
+            }
+
+            xhr.onerror = function(){
+                console.log('Request error');
+            }
+
+            // xhr.onreadystatechange = function(){
+            // console.log('READYSTATE: ', xhr.readyState);
+            //     if(this.status == 200 && this.readyState == 4){
+            //         //console.log(this.responseText);
+            //     }
+            // }
+
+            //Sends request
+            xhr.send();
+        }
+
+    </script>
+</body>
+</html>
