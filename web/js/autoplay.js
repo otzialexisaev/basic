@@ -203,12 +203,11 @@ function updatePlayer () {
   var _songTime = document.getElementById('songTime')
   var duration = _player.duration
   var percentDuration = _player.currentTime / duration
-  var fullWidth = _scrubber.offsetWidth
   var oneWidthPercent = _scrubber.offsetWidth / 100
   var dur2min = Math.floor(duration / 60) + ":" +
-  pad(Math.floor(duration - Math.floor(duration / 60) * 60),2)
+    pad(Math.floor(duration - Math.floor(duration / 60) * 60),2)
   var cur2min = Math.floor(_player.currentTime / 60) + ":" +
-  pad(Math.floor(_player.currentTime - Math.floor(_player.currentTime / 60) * 60),2)
+    pad(Math.floor(_player.currentTime - Math.floor(_player.currentTime / 60) * 60),2)
   _songTime.innerHTML= cur2min + " - " + dur2min
   _progress.setAttribute(
     'style', 'width: ' + percentDuration * oneWidthPercent * 100 + 'px'
@@ -313,15 +312,17 @@ playlistBtn.addEventListener('click', function(){
 })
 
 playlistMenu.onclick = function(e){
-  var toChange = document.getElementById(e.target.innerHTML)
-  if(toChange.getAttribute('style')=='display:none'){
-    toChange.setAttribute('style','display:grid')
-    e.target.setAttribute('style','background-color:#7F7FD5')
-    e.target.setAttribute('data-toggle', "true")
-  } else {
-    toChange.setAttribute('style','display:none')
-    e.target.setAttribute('style','background-color:transparent')
-    e.target.setAttribute('data-toggle', "false")
+  if(e.target.classList.contains('playlistMenuItem')){
+    var toChange = document.getElementById(e.target.innerHTML)
+    if(toChange.getAttribute('style')=='display:none'){
+      toChange.setAttribute('style','display:grid')
+      e.target.setAttribute('style','background-color:#7F7FD5')
+      e.target.setAttribute('data-toggle', "true")
+    } else {
+      toChange.setAttribute('style','display:none')
+      e.target.setAttribute('style','background-color:transparent')
+      e.target.setAttribute('data-toggle', "false")
+    }
+    storeDataToggle()
   }
-  storeDataToggle()
 }
