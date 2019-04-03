@@ -32,7 +32,7 @@ AppAsset::register($this);
     <?php
     NavBar::begin([
         //'brandLabel' => Yii::$app->name,
-        'brandLabel' => "My fucking app you bitch",
+        'brandLabel' => "My app",
         'brandUrl' => Yii::$app->homeUrl,
         'options' => [
             'class' => 'navbar-inverse navbar-fixed-top',
@@ -77,10 +77,10 @@ AppAsset::register($this);
 </div>
 <footer class="footer">
     <div class="container">
-        <p class="pull-left">&copy; My Fucking Company You Bitch <?= date('Y') ?></p>
+        <p class="pull-left">&copy; Me <?= date('Y') ?></p>
 
         <!--<p class="pull-right"><?= Yii::powered() ?></p>-->
-        <p class="pull-right">Powered By Fucking Me You Bitch
+        <p class="pull-right">Powered By Me 
     </div>
 </footer>
 <?php $this->endBody() ?>

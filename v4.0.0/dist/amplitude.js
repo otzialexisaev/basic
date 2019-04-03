@@ -13202,7 +13202,7 @@ module.exports = {
 		"jest": "^23.6.0",
 		"prettier": "1.15.1",
 		"pretty-quick": "^1.8.0",
-		"watch": "^1.0.2",
+		"watch": "^1.1.2",
 		"webpack": "^2.6.0"
 	},
 	"directories": {
