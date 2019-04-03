@@ -5,6 +5,7 @@ use yii\widgets\ActiveForm;
 use app\models\Notes;
 ?>
 <!-- Div for the player -->
+<audio id="player" ></audio>
 <div id="stickydiv">
   <div class="btnWrapper">
     <img src="css/resources/player/prevBtn.jpg" id="prevBtn">
@@ -18,8 +19,8 @@ use app\models\Notes;
 
   <div class="songInfoContainer">
     <div class="titlePlusTime">
-      <div class="songTitle" id="songTitle">No song selected</div>
-      <div class="songTime" id="songTime">0:00 - 0:00</div>
+      <div id="songTitle">No song selected</div>
+      <div id="songTime">0:00 - 0:00</div>
     </div>
     <div class="scrubber" id="scrubber" >
       <div id="progressBar"></div>
@@ -34,17 +35,13 @@ use app\models\Notes;
     <img src="css/resources/player/repeatAllBtn.jpg" id="repeatAllBtn">
   </div>
 
-<div class="btnWrapper">
-  <img src="css/resources/player/repeatOneBtn.jpg" id="repeatOneBtn">
-</div>
+  <div class="btnWrapper">
+    <img src="css/resources/player/repeatOneBtn.jpg" id="repeatOneBtn">
+  </div>
 
-<div class="btnWrapper">
-  <img src="css/resources/player/playlistBtn.jpg" id="playlistBtn">
-</div>
-  <audio id="player" >
-    <!--<source src="files/music/01 - Bakemonogatari/All/Date.mp3" type="audio/mpeg">
-  -->
-  </audio>
+  <div class="btnWrapper">
+    <img src="css/resources/player/playlistBtn.jpg" id="playlistBtn">
+  </div>
   <div id="audioSliderContainer">
     <input type="range" min="1" max="100" value="50" class="slider"
     id="myRange">

@@ -1,6 +1,5 @@
 // globals
 var _player = document.getElementById('player')
-_player.volume = 0.0090
 var _playlist = null
 var _playPauseBtn = document.getElementById('playPauseBtn')
 var _progress = document.getElementById('progressBar')
@@ -11,17 +10,16 @@ var _randomBtn = document.getElementById('randomBtn')
 var _repeatAllBtn = document.getElementById('repeatAllBtn')
 var _repeatOneBtn = document.getElementById('repeatOneBtn')
 var relativeLeft = 0
-var fullWidth = 0
 var randomBool = false
 var repeatAllBool = false
 var repeatOneBool = false
 var songTitle = document.getElementById('songTitle')
-var playlistSelection = document.getElementById('playlistSelection')
 var playlistBtn = document.getElementById('playlistBtn')
 var playlistMenu = document.getElementById('playlistMenu')
 var volumeSlider = document.getElementById('myRange')
-volumeSlider.value = 9
 var selected = null
+_player.volume = 0.0090
+volumeSlider.value = 9
 
 document.addEventListener('click', function (e) {
   if (
@@ -29,9 +27,8 @@ document.addEventListener('click', function (e) {
     e.target.nodeName === 'DIV' &&
     e.target.classList.contains('songContainer')
   ) {
-    playlistItemClick(e.target)
+    activateSong(e.target)
   } else if(e.target.classList.contains('addFavouriteBtn')) {
-    //console.log(e.target.parentNode.textContent.trim())
     addFavourite(e)
   }
 })
@@ -40,7 +37,7 @@ function setSelected(){
   selected = _playlist.querySelector('.selected')
 }
 
-function playlistItemClick (clickedElement) {
+function activateSong (clickedElement) {
   //Get _playlist
   //var _playlist = document.getElementById('playlist')
   if(_playlist!=null && _playlist.getAttribute('id')!=clickedElement.parentNode.getAttribute('id')){
@@ -106,13 +103,13 @@ function playRandom () {
 
 function playSame () {
   setSelected()
-  playlistItemClick(selected)
+  activateSong(selected)
 }
 
 function playPrev () {
   setSelected()
   if (selected && selected.previousElementSibling) {
-    playlistItemClick(selected.previousElementSibling)
+    activateSong(selected.previousElementSibling)
   }
 }
 
@@ -122,14 +119,20 @@ function playNext(){
     for(i = 0; i < ((Math.floor(Math.random() * 100))+1); i++){
       setSelected()
       if(selected.nextElementSibling){
-        playlistItemClick(selected.nextElementSibling)
+        activateSong(selected.nextElementSibling)
       } else {
         skipToStart()
       }
     }
-  } else if (selected && selected.nextElementSibling) {
-    playlistItemClick(selected.nextElementSibling)
-  } else if(selected && repeatAllBool){
+    return
+  }  
+
+  if (selected && selected.nextElementSibling) {
+    activateSong(selected.nextElementSibling)
+    return
+  } 
+  
+  if(selected && repeatAllBool){
     skipToStart()
   }
 }
@@ -145,7 +148,7 @@ function skipToStart(){
 // function playNext(){
 //   setSelected()
 //   if (selected && selected.nextElementSibling) {
-//     playlistItemClick(selected.nextElementSibling)
+//     activateSong(selected.nextElementSibling)
 //   } else if(selected && repeatAllBool){
 //     skipToStart()
 //   } else if(selected && randomBool){
@@ -169,11 +172,12 @@ _nextBtn.onclick = function(){
   setSelected()
   if(selected && selected.nextElementSibling || randomBool){
     playNext()
-  } else if(selected && !selected.nextElementSibling && repeatAllBool && !randomBool){
+    return
+  } 
+  if(selected && !selected.nextElementSibling && repeatAllBool){
     skipToStart()
   } 
 }
-
 
 // event listeners
 
@@ -199,7 +203,7 @@ function updatePlayer () {
   var _songTime = document.getElementById('songTime')
   var duration = _player.duration
   var percentDuration = _player.currentTime / duration
-  fullWidth = _scrubber.offsetWidth
+  var fullWidth = _scrubber.offsetWidth
   var oneWidthPercent = _scrubber.offsetWidth / 100
   var dur2min = Math.floor(duration / 60) + ":" +
   pad(Math.floor(duration - Math.floor(duration / 60) * 60),2)

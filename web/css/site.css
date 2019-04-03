@@ -293,14 +293,14 @@ Added by me
     margin-top: 3px;
 }
 
-.titlePlusTime .songTitle {
+#songTitle {
     float: left;
     height: 20px;
     width: 215px;
     overflow: hidden;
 }
 
-.titlePlusTime .songTime {
+#songTime {
     float: right;
 }
 
@@ -369,7 +369,6 @@ Added by me
 
 .addFavouriteBtn {
     background: url("resources/player/star.png") no-repeat;
-    display: inline-block;
     display: none;
     position: absolute;
     right: 0px;
