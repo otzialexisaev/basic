@@ -44,6 +44,8 @@ AppAsset::register($this);
             //['label' => 'Home', 'url' => ['/site/index']],
             //['label' => 'About', 'url' => ['/site/about']],
             //['label' => 'Contact', 'url' => ['/site/contact']],
+            ['label' => 'Songs', 'url' => ['/song/index']],
+            ['label' => 'Albums', 'url' => ['/album/index']],
             ['label' => 'OSTs', 'url' => ['/ost/index']],
             ['label' => 'FavOSTs', 'url' => ['/ost/favosts']],
             ['label' => 'Notes', 'url' => ['/notes/index']],

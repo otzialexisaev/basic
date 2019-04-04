@@ -1,3 +1,4 @@
+
 // globals
 var _player = document.getElementById('player')
 var _playlist = null
@@ -18,8 +19,8 @@ var playlistBtn = document.getElementById('playlistBtn')
 var playlistMenu = document.getElementById('playlistMenu')
 var volumeSlider = document.getElementById('myRange')
 var selected = null
-_player.volume = 0.0090
-volumeSlider.value = 9
+//_player.volume = 0.0090
+//volumeSlider.value = 9
 
 document.addEventListener('click', function (e) {
   if (
@@ -326,3 +327,4 @@ playlistMenu.onclick = function(e){
     storeDataToggle()
   }
 }
+

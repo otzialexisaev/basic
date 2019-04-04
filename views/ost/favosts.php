@@ -67,7 +67,7 @@ select ost.path from ost inner join favourite_songs on ost.id=favourite_songs.os
 <?php
   $allFavs = FavouriteSongs::find()->all();
   ?>
-  <div class="playlistContainer" id="playlist">
+  <div class="ostContainer" id="playlist">
   <?php
     $conn = mysqli_connect('localhost','root','','heyitsme');
     foreach ($allFavs as $ost) {

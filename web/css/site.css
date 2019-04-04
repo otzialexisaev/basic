@@ -186,7 +186,7 @@ Added by me
     list-style-type: none;
 }
 
-.playlistContainer {
+.ostContainer, .playlistAllContainer {
     margin-top: 10px;
     display: grid;
     grid-auto-flow: row;
@@ -200,7 +200,16 @@ Added by me
     border-radius: 4px;
 }
 
-.playlistContainer .songContainer {
+.playlistAllContainer{
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+}
+
+.playlistAllContainer a{
+    color: rgb(41, 41, 41);
+    font-size: 20px;
+}
+
+.ostContainer .songContainer {
     position: relative;
     background-color: rgba(255, 255, 255, 0.8);
     text-align: center;
@@ -232,7 +241,7 @@ Added by me
     margin-bottom: 10px;
 }
 
-.playlistContainer .songContainer:hover, .selected:hover, .playlistMenuItem:hover, #notesBtn:hover {
+.ostContainer .songContainer:hover, .selected:hover, .playlistMenuItem:hover, #notesBtn:hover, .playlistLinkContainer:hover {
     background: -webkit-linear-gradient(left, #7F7FD5, #86A8E7, rgb(145, 201, 234));
     color: white;
     border-radius: 4px;
@@ -457,4 +466,24 @@ Added by me
     #playlistMenu {
         margin-left: 740px;
     }
+}
+
+.playlistLinkContainer {
+    float: left;
+    overflow: hidden;
+    vertical-align: middle;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 175px;
+    height: 175px;
+    transition-duration: 0.4s;
+}
+ 
+.playlistLinkContainer p {
+    margin: 0 0 0;
+    width: 100%;
+    overflow-wrap: break-word;
+    text-align: center;
+    font-weight: bold;
 }

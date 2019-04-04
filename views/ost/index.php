@@ -71,7 +71,7 @@ use app\models\Notes;
   ?>
   <!-- Create grid container which contains a single playlist -->
   <!-- Id is taken from "seasons" table which is linked on the first song -->
-  <div class="playlistContainer" id="<?php $row = mysqli_fetch_array(mysqli_query($conn, "select seasons.season from seasons inner join ost on seasons.season_id=ost.season where ost.season=seasons.season_id and ost.id=1")); echo $row['season'] ?>">
+  <div class="ostContainer" id="<?php $row = mysqli_fetch_array(mysqli_query($conn, "select seasons.season from seasons inner join ost on seasons.season_id=ost.season where ost.season=seasons.season_id and ost.id=1")); echo $row['season'] ?>">
   <?php
     //Loop trough all songs
     foreach ($allOsts as $ost) {
@@ -80,7 +80,7 @@ use app\models\Notes;
       if($albumCheck!=$ost->path){
       ?>
       </div>
-      <div class="playlistContainer" id="<?php $row = mysqli_fetch_array(mysqli_query($conn, "select seasons.season from seasons inner join ost on seasons.season_id=ost.season where ost.season=seasons.season_id and ost.id=".$ost->id)); echo $row['season'] ?>">
+      <div class="ostContainer" id="<?php $row = mysqli_fetch_array(mysqli_query($conn, "select seasons.season from seasons inner join ost on seasons.season_id=ost.season where ost.season=seasons.season_id and ost.id=".$ost->id)); echo $row['season'] ?>">
       <?php
       //New "path" to check
       $albumCheck = $ost->path;
@@ -89,7 +89,7 @@ use app\models\Notes;
   <!-- Creates container for songs with attr data-audio containing path+name -->
     <div class="songContainer noselect" 
         data-audio="<?=$ost->path. $ost->name?>">
-        <!-- Name of song -"".mp3" -->
+        <!-- Name of song - ".mp3" -->
         <?=substr($ost->name, 0, -4)?>
         <!-- Class for fav-btn -->
       <div class="addFavouriteBtn"></div>
